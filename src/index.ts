@@ -21,7 +21,7 @@ export type PaypalConfig = z.infer<typeof paypalConfigSchema>;
 /** Default config returned by the GraphQL config query until settings persistence lands. */
 export const DEFAULT_PAYPAL_CONFIG: PaypalConfig = paypalConfigSchema.parse({});
 
-/** PayPal Orders v2 Order-shaped stub (no PayPal SDK — E-01 scaffold only). */
+/** PayPal Orders v2 Order-shaped stub (no PayPal SDK). */
 export type PaypalOrderStub = {
   id: string;
   status: 'CREATED' | 'SAVED' | 'APPROVED' | 'VOIDED' | 'COMPLETED' | 'PAYER_ACTION_REQUIRED';

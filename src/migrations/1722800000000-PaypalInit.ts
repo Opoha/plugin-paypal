@@ -1,7 +1,7 @@
 import type { MigrationInterface, QueryRunner } from 'typeorm';
 
 /**
- * Initial settings table for PayPal plugin (Phase 9 E-01 / ADR-0005).
+ * Initial settings table for PayPal plugin (ADR-0005).
  * Table prefix: plugin id `paypal` → `paypal_*`.
  */
 export class PaypalInit1722800000000 implements MigrationInterface {
