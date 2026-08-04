@@ -1,7 +1,7 @@
 {
   "name": "@opoha/plugin-paypal",
   "version": "1.0.0",
-  "description": "Official Opoha PayPal payment provider plugin (Phase 9 E-01 scaffold)",
+ "description": "Official Opoha PayPal payment provider plugin",
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",

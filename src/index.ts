@@ -229,7 +229,7 @@ export const paypalPaymentProvider: PaymentProvider = {
 };
 
 /**
- * Official PayPal payment plugin (Phase 9 E-01).
+ * Official PayPal payment plugin.
  * Registers payment provider stubs + admin settings + GraphQL config query.
  * Live PayPal SDK / secrets are intentionally out of scope for this scaffold —
  * mirrors the stripe/omise stub pattern (ADR-0003).

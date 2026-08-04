@@ -4,7 +4,7 @@
   "contractVersion": "0.1",
   "entry": "dist/index.js",
   "displayName": "PayPal",
-  "description": "PayPal payment provider — authorize/capture/refund/webhook stubs (Phase 9 E-01)",
+ "description": "PayPal payment provider — authorize/capture/refund/webhook stubs",
   "dependsOn": [],
   "required": false,
   "engines": {
