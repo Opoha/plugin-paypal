@@ -18,9 +18,4 @@ export const MIGRATIONS_TABLE_NAME = 'opoha_migrations_paypal' as const;
 export const entities = paypalEntities;
 export const migrations = paypalMigrations;
 
-export {
-  PaypalSettingsEntity,
-  PaypalInit1722800000000,
-  paypalEntities,
-  paypalMigrations,
-};
+export { PaypalSettingsEntity, PaypalInit1722800000000, paypalEntities, paypalMigrations };

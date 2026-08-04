@@ -1,9 +1,4 @@
-import {
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 /** OWNER: @opoha/plugin-paypal — settings row for PayPal config (ADR-0005). */
 @Entity({ name: 'paypal_settings' })

@@ -8,8 +8,6 @@
   "dependsOn": [],
   "required": false,
   "engines": {
-    "payment": [
-      "paypal"
-    ]
+    "payment": ["paypal"]
   }
 }

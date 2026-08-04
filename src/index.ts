@@ -19,20 +19,12 @@ export const paypalConfigSchema = z.object({
 export type PaypalConfig = z.infer<typeof paypalConfigSchema>;
 
 /** Default config returned by the GraphQL config query until settings persistence lands. */
-export const DEFAULT_PAYPAL_CONFIG: PaypalConfig = paypalConfigSchema.parse(
-  {},
-);
+export const DEFAULT_PAYPAL_CONFIG: PaypalConfig = paypalConfigSchema.parse({});
 
 /** PayPal Orders v2 Order-shaped stub (no PayPal SDK — E-01 scaffold only). */
 export type PaypalOrderStub = {
   id: string;
-  status:
-    | 'CREATED'
-    | 'SAVED'
-    | 'APPROVED'
-    | 'VOIDED'
-    | 'COMPLETED'
-    | 'PAYER_ACTION_REQUIRED';
+  status: 'CREATED' | 'SAVED' | 'APPROVED' | 'VOIDED' | 'COMPLETED' | 'PAYER_ACTION_REQUIRED';
   intent: 'CAPTURE' | 'AUTHORIZE';
   purchase_units: Array<{
     reference_id: string;
@@ -115,9 +107,7 @@ function paymentExternalIdFromEvent(event: PaypalEventStub): string | undefined 
  * Map PayPal `event_type` → PaymentEngine webhook actions.
  * Signature verification is deferred until live PayPal secrets land.
  */
-export function mapPaypalEventToWebhookResult(
-  event: PaypalEventStub,
-): PaymentWebhookResult {
+export function mapPaypalEventToWebhookResult(event: PaypalEventStub): PaymentWebhookResult {
   const paymentExternalId = paymentExternalIdFromEvent(event);
   switch (event.event_type) {
     case 'CHECKOUT.ORDER.APPROVED':
@@ -229,9 +219,7 @@ export const paypalPaymentProvider: PaymentProvider = {
     };
   },
 
-  async handleWebhook(
-    input: PaymentWebhookInput,
-  ): Promise<PaymentWebhookResult> {
+  async handleWebhook(input: PaymentWebhookInput): Promise<PaymentWebhookResult> {
     const event = asPaypalEvent(input.body);
     if (!event) {
       return { handled: false, action: 'ignore' };

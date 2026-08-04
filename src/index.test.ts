@@ -1,11 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 
-import {
-  MIGRATIONS_TABLE_NAME,
-  PLUGIN_ID,
-  entities,
-  migrations,
-} from './database.js';
+import { MIGRATIONS_TABLE_NAME, PLUGIN_ID, entities, migrations } from './database.js';
 import paypalPlugin, {
   DEFAULT_PAYPAL_CONFIG,
   mapPaypalEventToWebhookResult,
@@ -100,9 +95,7 @@ describe('@opoha/plugin-paypal', () => {
     expect(auth.raw).toMatchObject({
       status: 'APPROVED',
       intent: 'CAPTURE',
-      purchase_units: [
-        { reference_id: 'o1', amount: { currency_code: 'USD', value: '25.00' } },
-      ],
+      purchase_units: [{ reference_id: 'o1', amount: { currency_code: 'USD', value: '25.00' } }],
     });
 
     const cap = await paypalPaymentProvider.capture({
@@ -172,17 +165,11 @@ describe('@opoha/plugin-paypal', () => {
     const migration = new PaypalInit1722800000000();
     const upRunner = createQueryRunnerMock();
     await migration.up(upRunner as never);
-    expect(upRunner.queries.join('\n')).toContain(
-      'CREATE TABLE "paypal_settings"',
-    );
-    expect(upRunner.queries.join('\n')).not.toMatch(
-      /ALTER TABLE "(users|roles|payments)"/i,
-    );
+    expect(upRunner.queries.join('\n')).toContain('CREATE TABLE "paypal_settings"');
+    expect(upRunner.queries.join('\n')).not.toMatch(/ALTER TABLE "(users|roles|payments)"/i);
 
     const downRunner = createQueryRunnerMock();
     await migration.down(downRunner as never);
-    expect(downRunner.queries.join('\n')).toContain(
-      'DROP TABLE IF EXISTS "paypal_settings"',
-    );
+    expect(downRunner.queries.join('\n')).toContain('DROP TABLE IF EXISTS "paypal_settings"');
   });
 });
